@@ -1,9 +1,44 @@
 import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 
 export function GiveAttempts(): React.JSX.Element {
+    const [attempts, setAttempts] = useState<number>(3);
+    const [requestedAttempts, setRequestedAttempts] = useState<number>(0);
+
+    const requestAttempts: React.ChangeEventHandler<HTMLInputElement> = (
+        event,
+    ) => {
+        if (!isNaN(parseInt(event.target.value))) {
+            setRequestedAttempts(parseInt(event.target.value));
+        } else {
+            setRequestedAttempts(0);
+        }
+    };
+
     return (
         <div>
-            <h3>Give Attempts</h3>
+            <Form.Group controlId="GiveAttempts">
+                <Form.Label>Request Attempts</Form.Label>
+                <Form.Control
+                    type="number"
+                    value={requestedAttempts}
+                    onChange={requestAttempts}
+                />
+            </Form.Group>
+            Attempts Left: {attempts}
+            <Button
+                onClick={() => {
+                    setAttempts(attempts - 1);
+                }}
+                value="use"
+                disabled={!attempts}
+            ></Button>
+            <Button
+                onClick={() => {
+                    setAttempts(requestedAttempts);
+                }}
+                value="gain"
+            ></Button>
         </div>
     );
 }
