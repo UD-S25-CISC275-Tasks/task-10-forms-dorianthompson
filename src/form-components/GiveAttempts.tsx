@@ -28,7 +28,9 @@ export function GiveAttempts(): React.JSX.Element {
             Attempts Left: {attempts}
             <Button
                 onClick={() => {
-                    setAttempts(attempts - 1);
+                    if (attempts) {
+                        setAttempts(attempts - 1);
+                    }
                 }}
                 name="use"
                 disabled={!attempts}
@@ -37,7 +39,7 @@ export function GiveAttempts(): React.JSX.Element {
             </Button>
             <Button
                 onClick={() => {
-                    setAttempts(requestedAttempts);
+                    setAttempts(attempts + requestedAttempts);
                 }}
                 name="gain"
             >
