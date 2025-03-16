@@ -33,8 +33,6 @@ export function getNonEmptyQuestions(questions: Question[]): Question[] {
         },
     );
 
-    console.log(nonempty);
-
     return nonempty;
 }
 
