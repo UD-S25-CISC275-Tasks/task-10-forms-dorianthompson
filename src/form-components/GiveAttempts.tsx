@@ -30,15 +30,19 @@ export function GiveAttempts(): React.JSX.Element {
                 onClick={() => {
                     setAttempts(attempts - 1);
                 }}
-                value="use"
+                name="use"
                 disabled={!attempts}
-            ></Button>
+            >
+                Use
+            </Button>
             <Button
                 onClick={() => {
                     setAttempts(requestedAttempts);
                 }}
-                value="gain"
-            ></Button>
+                name="gain"
+            >
+                Gain
+            </Button>
         </div>
     );
 }
